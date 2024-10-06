@@ -10,30 +10,15 @@ import java.util.stream.*;
 import static java.util.stream.Collectors.joining;
 import static java.util.stream.Collectors.toList;
 
-class Result {
-
-    /*
-     * Complete the 'pageCount' function below.
-     *
-     * The function is expected to return an INTEGER.
-     * The function accepts following parameters:
-     *  1. INTEGER n
-     *  2. INTEGER p
-     */
-
-    public static int pageCount(int n, int p) {
-        int largestEvenNumber = n % 2 == 0 ? n : n-1;
-        int largestOddNumber = n % 2 == 0 ? n+1 : n;
-        int pageCountFromLeft = p/2;
-        int pageCountFromRight;
-        if (p % 2 == 0) {
-            pageCountFromRight = (largestEvenNumber - p)/2;
-        } else {
-            pageCountFromRight = (largestOddNumber - p)/2;
-        }
+class Result
+{
+    public static int pageCount(int n, int p)
+    {
+        int pageCountFromLeft = p / 2;
+        int pageCountFromRight = n / 2 - pageCountFromLeft;
+        
         return Math.min(pageCountFromLeft, pageCountFromRight);
     }
-
 }
 
 public class Solution {
